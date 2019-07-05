@@ -112,13 +112,20 @@ public class Window1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
         String user = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
         
         if(ManagerDB.getInstance().userExist(user) == true){
             JOptionPane.showMessageDialog(this, "User exist");
-        }else{
-        JOptionPane.showMessageDialog(this, "Registry");
+           
+        }else{ 
+            ManagerDB.getInstance().addUser(user, password);
+           
         }
+        
+        jTextField1.setText(null);
+        jPasswordField1.setText(null);
     }//GEN-LAST:event_jButton2ActionPerformed
 
   

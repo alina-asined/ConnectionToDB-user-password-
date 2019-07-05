@@ -38,23 +38,39 @@ public class ManagerDB {
     public static ManagerDB getInstance(){
         return SingletonHolder.SINGLETON;
     }
-    public boolean userExist(String user){
+    public boolean userExist(String name){
     
-        String sql = "SELECT user FROM users WHERE user = ?'" + user + "'";
+        String sql = "SELECT user FROM users WHERE user = '" + name + "'";
         try (
                 PreparedStatement stmt = con.prepareStatement(sql);
                 ResultSet rs = stmt.executeQuery();
                 ){
 
                     while(rs.next()){
-                        if(rs.getString("user") != null){
+                        if( rs.getString("user") != null){
                                return true;
                         }
                     }
-                
-            
-        }catch (Exception e) {
+                    
+        }catch (SQLException e) {
+            e.printStackTrace();
         }
         return false;
+    }
+    
+    public void addUser(String user, String password){
+        String sql = "INSERT INTO users VALUES(null, ?, ?)";
+        try (
+                PreparedStatement stmt = con.prepareStatement(sql);
+                
+                ){
+            stmt.setString(1, user);
+            stmt.setString(2, password);
+            
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
     }
 }
