@@ -73,4 +73,31 @@ public class ManagerDB {
         }
         
     }
+    
+    public boolean verifyUserPassword(String user, String password){
+    
+        String sql = "SELECT user FROM users WHERE (user='" + user + "') AND (password ='"+password+"')";
+                    //SELECT user FROM users WHERE (user='user') AND (password='password')
+                
+                    
+        try (
+                PreparedStatement stmt = con.prepareStatement(sql);
+                ResultSet rs = stmt.executeQuery();
+                ){
+//            stmt.setString(1, user);
+//            stmt.setString(2, password);
+            
+
+            while(rs.next()){    
+                if(rs.getString("user") != null){
+                    return true;
+                }
+            
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+    }
 }
