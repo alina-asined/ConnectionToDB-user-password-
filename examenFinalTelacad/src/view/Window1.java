@@ -19,7 +19,7 @@ public class Window1 extends javax.swing.JFrame {
         initComponents();
         
         setLocationRelativeTo(null);
-        setVisible(true);
+        
     }
 
     
@@ -108,7 +108,18 @@ public class Window1 extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String user = jTextField1.getText();
+        String password = new String(jPasswordField1.getPassword());
         
+        if(ManagerDB.getInstance().verifyUserPassword(user, password) == true){
+            
+            JOptionPane.showMessageDialog(this, "Login Successful!");
+           
+            new Window1().setVisible(false);
+            new Window2(user);
+        }else{
+            JOptionPane.showMessageDialog(this, "Incorrect user or password!");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

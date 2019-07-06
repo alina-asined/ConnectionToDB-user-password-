@@ -4,9 +4,9 @@ package view;
 public class Window2 extends javax.swing.JFrame {
 
     
-    public Window2() {
+    public Window2(String user) {
         initComponents();
-        
+        System.out.println("window2 " + user);
         setLocationRelativeTo(null);
         setVisible(true);
     }
