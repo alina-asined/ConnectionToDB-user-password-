@@ -106,7 +106,7 @@ public class Window1 extends javax.swing.JFrame {
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jPasswordField1ActionPerformed
-
+        //Login button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String user = jTextField1.getText();
         String password = new String(jPasswordField1.getPassword());
@@ -121,7 +121,7 @@ public class Window1 extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Incorrect user or password!");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-
+        // Registry  button
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
         String user = jTextField1.getText();
