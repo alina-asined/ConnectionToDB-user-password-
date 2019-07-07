@@ -115,7 +115,7 @@ public class Window1 extends javax.swing.JFrame {
             
             JOptionPane.showMessageDialog(this, "Login Successful!");
            
-            new Window1().setVisible(false);
+            this.setVisible(false);//this.dispose()
             new Window2(user);
         }else{
             JOptionPane.showMessageDialog(this, "Incorrect user or password!");
