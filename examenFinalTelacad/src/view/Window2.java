@@ -1,13 +1,15 @@
 
 package view;
 
+import managerDB.ManagerDB;
+
 public class Window2 extends javax.swing.JFrame {
 
-    
+    String user;
     public Window2(String user) {
         initComponents();
         
-        
+        //this.user = user;
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -38,6 +40,11 @@ public class Window2 extends javax.swing.JFrame {
         });
 
         jButton3.setText("DELETE");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -72,10 +79,19 @@ public class Window2 extends javax.swing.JFrame {
     //Delogare button
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
+       delogare();
+    }//GEN-LAST:event_jButton1ActionPerformed
+        //Delete button
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       
+        ManagerDB.getInstance().delete(this.user);
+        delogare();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    public void delogare(){
         this.dispose();
         new Window1().setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

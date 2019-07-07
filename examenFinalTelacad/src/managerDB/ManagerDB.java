@@ -5,6 +5,7 @@
  */
 package managerDB;
 
+import com.sun.org.apache.xerces.internal.xni.XMLDTDHandler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -99,5 +100,21 @@ public class ManagerDB {
         }
         
         return false;
+    }
+    
+    //method to delete
+    public void delete(String nume){
+        String sql = "DELETE FROM users WHERE user = '" + nume + "'";
+            try (
+                    PreparedStatement stmt = con.prepareStatement(sql);
+                    
+                    ){
+                
+                stmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+       
     }
 }
